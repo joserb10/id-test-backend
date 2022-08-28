@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateNotesTable extends Migration
@@ -19,11 +20,11 @@ class CreateNotesTable extends Migration
             $table->string('description')->nullable();
             $table->integer('group_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->binary('image')->nullable();
             $table->foreign('group_id')->references('id')->on('groups');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE notes ADD image MEDIUMBLOB");
     }
 
     /**

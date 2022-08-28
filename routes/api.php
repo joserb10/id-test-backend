@@ -27,5 +27,6 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 Route::group(['middleware'=> ['auth:api']], function () {
     Route::get('/group/getAll', [GroupController::class, 'getGroups']);
-    Route::get('/note/getByGroup', [NoteController::class, 'getNotesByGroup']);
+    Route::post('/note/getByGroup', [NoteController::class, 'getNotesByGroup']);
+    Route::post('/note/create', [NoteController::class, 'createNote']);
 });
