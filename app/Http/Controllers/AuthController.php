@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /*Función para crear un usuario en base de datos y devolve el token de acceso*/
     public function register(Request $request) {
         $validator = $request->validate([
             'username' => 'required',
@@ -27,6 +28,7 @@ class AuthController extends Controller
         ]);
     }
 
+    /*Función para autenticar al usuario y devolver el token en caso sea correcta*/
     public function login(Request $request) {
         $loginData = $request->validate([
            'username' => 'required',
